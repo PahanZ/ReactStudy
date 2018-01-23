@@ -3,7 +3,7 @@ export default (element) => {
   let hours = date.getHours();
   let minutes = date.getMinutes();
   let seconds = date.getSeconds();
-  let day = date.getDay();
+  let day = date.getDate();
   let month = date.getMonth();
   const year = date.getFullYear();
   if (hours < 10) {
@@ -16,10 +16,10 @@ export default (element) => {
     seconds = `0${seconds}`;
   }
   if (day < 10) {
-    day = `0${minutes}`;
+    day = `0${day}`;
   }
   if (month < 10) {
-    month = `0${seconds}`;
+    month = `0${month}`;
   }
   return (`${day}.${month}.${year} ${hours}:${minutes}:${seconds}`);
 };
