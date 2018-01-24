@@ -1,5 +1,5 @@
 import React from 'react';
-import correctDate from '../correctDate';
+import correctDate from '../data/correctDate';
 
 export default (props) => {
   const card = props.data.flights.map((element, i) => (
