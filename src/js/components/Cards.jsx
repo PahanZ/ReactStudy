@@ -2,8 +2,9 @@ import React from 'react';
 import correctDate from '../data/correctDate';
 
 export default (props) => {
-  const card = props.data.flights.map((element, i) => (
-    <div key={i} className="card">
+  // console.log(props.data);
+  const card = props.data.map((element, i) => (
+    <div key={`Card${i}`} className="card">
       <div key={`Carrier${element.id}`}>{`Carrier: ${element.carrier}`}</div>
       <div key={`From${element.id}`}>{`From: ${element.direction.from}`}</div>
       <div key={`To${element.id}`}>{`To: ${element.direction.to}`}</div>

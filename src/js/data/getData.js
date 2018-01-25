@@ -1,6 +1,6 @@
 import data from './data.json';
 
-const getData = () => data;
+const getData = info => info;
 const info = getData(data);
 
 export default info;

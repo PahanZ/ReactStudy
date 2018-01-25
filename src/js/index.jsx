@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import '../styles.scss';
 
 import correctDate from './data/correctDate';
@@ -13,30 +13,39 @@ class App extends React.Component {
     super(props);
     this.state = { carriers: info.flights };
     this.onChange = this.onChange.bind(this);
+    this.onReset = this.onReset.bind(this);
   }
-  onChange() {
-    console.log('qwe');
-    // this.setState({ carriers: this.state.carriers.filter.call(element => element.value === 'KLM') });
+  onChange(event) {
+    this.setState({
+      carriers: this.state.carriers.filter(element =>
+        element.carrier === event.target.value),
+    });
+  }
+  onReset() {
+    console.log('reset');
+    // this.setState({ carriers: info.flights });
   }
   render() {
     return (
       <div className="container">
-        <Select
-          data={this.state.carriers}
-          title="All Carrier"
-          onChange={this.onChange}
-          // ref={select => this.select = select}
-        />
-        <Cards data={info} correctdate={correctDate} />
+        <div>
+          <Select
+            data={info.flights}
+            title="All Carrier"
+            onChange={this.onChange}
+            onReset={this.onReset}
+          />
+        </div>
+        <Cards data={this.state.carriers} correctdate={correctDate} />
       </div>
     );
   }
 }
 
-Select.propTypes = {
-  data: PropTypes.array,
-  title: PropTypes.string,
-  onChange: PropTypes.func,
-};
+// Select.propTypes = {
+//   // data: PropTypes.array,
+//   title: PropTypes.string,
+//   onChange: PropTypes.func,
+// };
 
 ReactDOM.render(<App />, document.getElementById('app'));

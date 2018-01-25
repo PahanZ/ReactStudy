@@ -9,9 +9,13 @@ body {
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        margin: 0 5%;
         select {
             height: 35px;
-        }
+            position: fixed;
+            left: 0;
+            top: 0;
+        }      
         .card {
             margin: 25px;
             padding: 20px;
