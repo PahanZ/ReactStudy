@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { createStore } from 'redux';
 import '../styles.scss';
 
 import correctDate from './data/correctDate';
@@ -24,6 +25,18 @@ class App extends React.Component {
     }
   }
   render() {
+
+
+    const reducer = (check = [], action) => {
+      console.log('check action', action);
+      return check;
+    };
+    const store = createStore(reducer);
+    store.subscribe(() => {
+      console.log('check subscribe', store.getState());
+    });
+    store.dispatch({ type: 'check' });
+
     return (
       <div className="container">
         <div>

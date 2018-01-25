@@ -1,2 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
 body {
-  background-color: grey; }
+  background-color: #ffd505; }
+  body .container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 5%; }
+    body .container select {
+      height: 35px;
+      position: fixed;
+      left: 0;
+      top: 0; }
+    body .container .card {
+      margin: 25px;
+      padding: 20px;
+      box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.48);
+      background-color: #ffa500;
+      transition: .3s; }
+    body .container .card:hover {
+      box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.6); }
+
+/*# sourceMappingURL=style.css.map*/
