@@ -18,13 +18,9 @@ class App extends React.Component {
     if (event.target.value === 'All Carrier') {
       this.setState({ carriers: info.flights });
     } else {
-      const newState = [];
-      info.flights.forEach((element) => {
-        if (element.carrier === event.target.value) {
-          newState.push(element);
-          this.setState({ carriers: newState });
-        }
-      });
+      const newState = info.flights.filter(element => (
+        (element.carrier === event.target.value) ? element : null));
+      this.setState({ carriers: newState });
     }
   }
   render() {
