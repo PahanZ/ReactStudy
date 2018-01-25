@@ -2,7 +2,6 @@ import React from 'react';
 import correctDate from '../data/correctDate';
 
 export default (props) => {
-  // console.log(props.data);
   const card = props.data.map((element, i) => (
     <div key={`Card${i}`} className="card">
       <div key={`Carrier${element.id}`}>{`Carrier: ${element.carrier}`}</div>
