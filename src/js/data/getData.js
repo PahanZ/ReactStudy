@@ -4,13 +4,13 @@ import data from './data.json';
 const getData = info => info.flights;
 const info = getData(data);
 
-const reducer = (state = info, action) => {
+const reducer = (state, action) => {
   if (action.type === 'changeStore') {
-    return action.change;
+    state = action.change;
   }
   return state;
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, info);
 
 export { store, info };

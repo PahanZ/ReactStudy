@@ -8,40 +8,33 @@ import correctDate from './data/correctDate';
 import Select from './components/Select.jsx';
 import Cards from './components/Cards.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-  }
-  onChange(event) {
-    const filter = (carriers) => {
-      if (event.target.value === 'All Carrier') {
-        return info;
-      }
-      const newState = carriers.filter(element => (
-        (element.carrier === event.target.value) ? element : null));
-      return newState;
-    };
-    store.dispatch({
-      type: 'changeStore',
-      change: filter(info),
-    });
-  }
-  render() {
-    return (
-      <div className="container">
-        <div>
-          <Select
-            data={info}
-            title="All Carrier"
-            onChange={this.onChange}
-          />
-        </div>
-        <Cards data={store.getState()} correctdate={correctDate} />
-      </div>
-    );
-  }
-}
+const onChange = (event) => {
+  const filter = (carriers) => {
+    if (event.target.value === 'All Carrier') {
+      return info;
+    }
+    const newState = carriers.filter(element => (
+      (element.carrier === event.target.value) ? element : null));
+    return newState;
+  };
+  store.dispatch({
+    type: 'changeStore',
+    change: filter(info),
+  });
+};
+
+const App = () => (
+  <div className="container">
+    <div>
+      <Select
+        data={info}
+        title="All Carrier"
+        onChange={onChange}
+      />
+    </div>
+    <Cards data={store.getState()} correctdate={correctDate} />
+  </div>
+);
 
 // Select.propTypes = {
 //   data: PropTypes.array,
