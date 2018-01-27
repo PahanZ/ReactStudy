@@ -40,10 +40,13 @@
     "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
+    "autoprefixer": "^7.2.5",
     "eslint": "^4.15.0",
+    "postcss-loader": "^2.0.10",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   }
 }

@@ -11,6 +11,5 @@ export default (props) => {
       <div key={`Departure${element.id}`}>{`Departure: ${correctDate(element.departure)}`}</div>
     </div>
   ));
-  console.log(card);
   return card;
 };

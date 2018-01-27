@@ -1,14 +1,19 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 body {
   background-color: #ffd505; }
   body .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     margin: 0 5%; }
     body .container select {
       height: 35px;
@@ -18,10 +23,14 @@ body {
     body .container .card {
       margin: 25px;
       padding: 20px;
-      box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.48);
+      -webkit-box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.48);
+              box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.48);
       background-color: #ffa500;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
       transition: .3s; }
     body .container .card:hover {
-      box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.6); }
+      -webkit-box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.6);
+              box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.6); }
 
 /*# sourceMappingURL=style.css.map*/
