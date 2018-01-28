@@ -47,32 +47,35 @@ import Cards from './Cards.jsx';
 //   return newState;
 // };
 
-const App = ({ state, onChange }) => {
-  // console.log(state);
-  const firstStoreUpload = state();
+const App = ({ state, data, options, onChange }) => {
+  // console.log(state)
+  // console.log(data);
+  // console.log(options);
   return (
     <div className="container">
       <div>
         <Select
-          data={firstStoreUpload}
+          data={options}
           title="All Carrier"
           onChange={onChange}
         />
       </div>
-      <Cards data={state} correctdate={correctDate} />
+      <Cards data={data} correctdate={correctDate} />
     </div>
   );
 };
 
+
 const mapStateToProps = state => ({
-  state: console.log(state),
+  data: state.flights.flights,
+  options: state.filterOptions,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChange: (change) => {
+  onChange: (data) => {
     dispatch({
       type: 'changeStore',
-      payload: change,
+      payload: console.log(data),
     });
   },
 });
