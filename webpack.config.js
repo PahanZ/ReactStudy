@@ -2,8 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const merge = require('webpack-merge');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
+const development = {
   devtool: 'source-map',
   entry: './src/js/index.jsx',
   output: {
@@ -39,3 +41,15 @@ module.exports = {
     new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],
 };
+
+const production = {
+  plugins: [
+    new UglifyJsPlugin(),
+  ],
+};
+
+module.exports = env => ((env === 'development') ? development : merge([
+  development,
+  production,
+]));
+
