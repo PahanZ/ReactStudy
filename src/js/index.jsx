@@ -15,18 +15,11 @@ const flights = (state = info, action) => {
   return state.flights;
 };
 
-// const filterOptions = (state = 'KLM') => {
-  // console.log(state);
-  // if (action.type === 'changeStore') {
-  //   return action.payload;
-  // }
-  // return state;
-// };
-const filterOption = (state = '', action) => {
+const filterOption = (state = 'All carrier', action) => {
   if (action.type === 'setCompanyFilter') {
     return {
       ...state,
-      companyName: action.payload,
+      carriers: action.payload,
     };
   }
   return state;

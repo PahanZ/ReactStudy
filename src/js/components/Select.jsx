@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 const Select = (props) => {
   const wrap = (event) => {
-    console.log(event.currentTarget.value);
-    console.log(props)
+    return (props.onChange(event.currentTarget.value));
   };
+  console.log(props);
   const items = [];
-  props.data.forEach((element) => {    
+  props.data.forEach((element) => {
     items.push(<option key={element}>{element}</option>);
   });
-  items.unshift(<option key="allCompamies">{props.title}</option>);
+  items.unshift(<option key="allCompamies" value={props.title}>{props.title}</option>);
   return <select onChange={wrap}>{items}</select>;
 };
 
