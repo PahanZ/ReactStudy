@@ -2,18 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Select = (props) => {
-  const obj = {};
-  Object.values(props.data).forEach((item) => {
-    obj[item] = null;
+  const wrap = (event) => {
+    console.log(event.currentTarget.value);
+    console.log(props)
+  };
+  const items = [];
+  props.data.forEach((element) => {    
+    items.push(<option key={element}>{element}</option>);
   });
-  const items = Object.keys(obj).map((element, i) => <option key={i.toString()}>{element}</option>);
   items.unshift(<option key="allCompamies">{props.title}</option>);
-  return <select onChange={props.onChange}>{items}</select>;
+  return <select onChange={wrap}>{items}</select>;
 };
 
-Select.propTypes = {
-  data: PropTypes.object.isRequired,
-  onChange: PropTypes.func,
-};
+// Select.propTypes = {
+//   data: PropTypes.object.isRequired,
+//   onChange: PropTypes.func,
+// };
 
 export default Select;

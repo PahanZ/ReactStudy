@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import info from './data/getData';
 
-const data = (state = info, action) => {
+const flights = (state = info, action) => {
   if (action.type === 'changeStore') {
     return {
       ...state,
@@ -15,21 +15,25 @@ const data = (state = info, action) => {
   return state.flights;
 };
 
-const filterOptions = (state = info, action) => {
-  if (action.type === 'changeStore') {
-    const newState = Object.values(state);
+// const filterOptions = (state = 'KLM') => {
+  // console.log(state);
+  // if (action.type === 'changeStore') {
+  //   return action.payload;
+  // }
+  // return state;
+// };
+const filterOption = (state = '', action) => {
+  if (action.type === 'setCompanyFilter') {
     return {
-      ...newState.map(element => element),
+      ...state,
+      companyName: action.payload,
     };
   }
-  return {
-    ...state.flights.map(element => element.carrier),
-  };
+  return state;
 };
 
-
 const rootReducer = combineReducers({
-  data, filterOptions,
+  flights, filterOption,
 });
 
 const store = createStore(rootReducer);

@@ -4,7 +4,7 @@ import correctDate from '../data/correctDate';
 
 const Cards = (props) => {
   const card = Object.values(props.data).map((element, i) => {
-    console.log(element);
+    // console.log(element);
     return (
       <div key={i.toString()} className="card">
         <div key={`Carrier${element.id}`}>{`Carrier: ${element.carrier}`}</div>

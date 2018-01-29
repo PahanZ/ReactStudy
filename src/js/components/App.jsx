@@ -49,32 +49,49 @@ import Cards from './Cards.jsx';
 // };
 
 
-const App = ({ data, options, onChange }) => {
-  // console.log(onChange);
+const App = ({ flights, companiesNames, options }) => {
+  console.log(flights);
   return (
     <div className="container">
       <div>
         <Select
-          data={options}
+          data={companiesNames}
           title="All Carrier"
-          onChange={onChange}
+          onChange={options}
         />
       </div>
-      <Cards data={data} correctdate={correctDate} />
+      <Cards data={flights} correctdate={correctDate} />
     </div>
   );
 };
-
+// const mapStateToProps = state => ({
+//   data: state.flights,
+//   carriers: state.flights.map(element => element.carrier),
+//   options: state.filterOptions,
+// });
 const mapStateToProps = state => ({
-  data: state.data,
-  options: state.filterOptions,
+  flights: state.flights.filter(element => {
+    // console.log(element);
+    return element.carrier === "KLM";
+  }),
+  // flights: state.filterOptions.companyName && state.flights.filter(flight =>
+  // flight.companyName === state.filterOptions.companyName),
+  companiesNames: new Set(state.flights.map(item => (item.carrier))),
+  options: state.filterOption,
 });
+
 
 const mapDispatchToProps = dispatch => ({
   onChange: (data) => {
     dispatch({
       type: 'changeStore',
       payload: data,
+    });
+  },
+  onSmth: (data2) => {
+    dispatch({
+      type: 'setCompanyFilter',
+      payload: data2,
     });
   },
 });
