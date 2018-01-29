@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import '../../styles.scss';
 
 import correctDate from '../data/correctDate';
@@ -47,10 +48,9 @@ import Cards from './Cards.jsx';
 //   return newState;
 // };
 
-const App = ({ state, data, options, onChange }) => {
-  // console.log(state)
-  // console.log(data);
-  // console.log(options);
+
+const App = ({ data, options, onChange }) => {
+  // console.log(onChange);
   return (
     <div className="container">
       <div>
@@ -65,9 +65,8 @@ const App = ({ state, data, options, onChange }) => {
   );
 };
 
-
 const mapStateToProps = state => ({
-  data: state.flights.flights,
+  data: state.data,
   options: state.filterOptions,
 });
 
@@ -75,10 +74,17 @@ const mapDispatchToProps = dispatch => ({
   onChange: (data) => {
     dispatch({
       type: 'changeStore',
-      payload: console.log(data),
+      payload: data,
     });
   },
 });
+
+// App.propTypes = {
+//   data: PropTypes.array.isRequired,
+//   options: PropTypes.object.isRequired,
+//   onChange: PropTypes.func,
+// };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

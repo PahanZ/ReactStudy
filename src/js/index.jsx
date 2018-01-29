@@ -5,24 +5,31 @@ import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import info from './data/getData';
 
-const flights = (state = info, action) => {
+const data = (state = info, action) => {
   if (action.type === 'changeStore') {
     return {
       ...state,
-      someParams: action.payload,
+      filter: action.payload,
     };
   }
-  return state;
+  return state.flights;
 };
 
-const filterOptions = (state = info) => {
+const filterOptions = (state = info, action) => {
+  if (action.type === 'changeStore') {
+    const newState = Object.values(state);
+    return {
+      ...newState.map(element => element),
+    };
+  }
   return {
     ...state.flights.map(element => element.carrier),
   };
 };
 
+
 const rootReducer = combineReducers({
-  flights, filterOptions,
+  data, filterOptions,
 });
 
 const store = createStore(rootReducer);
