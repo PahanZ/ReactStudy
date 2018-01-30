@@ -5,15 +5,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import info from './data/getData';
 
-const flights = (state = info, action) => {
-  if (action.type === 'changeStore') {
-    return {
-      ...state,
-      filter: action.payload,
-    };
-  }
-  return state;
-};
+const flights = (state = info) => state;
 
 const filterOption = (state = '', action) => {
   if (action.type === 'setCompanyFilter') {
