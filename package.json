@@ -1,5 +1,5 @@
 {
-  "name": "reactstudy",
+  "name": "TestTaskForOneTwoTrip",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/PahanZ/ReactStudy.git"
   },
   "keywords": [
-    "react"
+    "react", "redux"
   ],
   "author": "PahanZ",
   "license": "ISC",

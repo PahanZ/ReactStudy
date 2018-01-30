@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 
 const development = {
   devtool: 'source-map',
@@ -11,6 +12,9 @@ const development = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/bundle.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -45,6 +49,9 @@ const development = {
 const production = {
   plugins: [
     new UglifyJsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
   ],
 };
 

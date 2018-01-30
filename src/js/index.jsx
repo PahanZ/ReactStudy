@@ -2,7 +2,7 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import App from './components/App';
 import info from './data/getData';
 
 const flights = (state = info, action) => {
@@ -12,15 +12,12 @@ const flights = (state = info, action) => {
       filter: action.payload,
     };
   }
-  return state.flights;
+  return state;
 };
 
-const filterOption = (state = 'All carrier', action) => {
+const filterOption = (state = '', action) => {
   if (action.type === 'setCompanyFilter') {
-    return {
-      ...state,
-      carriers: action.payload,
-    };
+    return action.payload;
   }
   return state;
 };
