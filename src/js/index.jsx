@@ -1,22 +1,9 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import info from './data/getData';
-
-const flights = (state = info) => state;
-
-const filterOption = (state = '', action) => {
-  if (action.type === 'setCompanyFilter') {
-    return action.payload;
-  }
-  return state;
-};
-
-const rootReducer = combineReducers({
-  flights, filterOption,
-});
+import rootReducer from './redux/reducers';
 
 const store = createStore(rootReducer);
 

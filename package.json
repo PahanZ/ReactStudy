@@ -13,7 +13,8 @@
     "url": "git+https://github.com/PahanZ/ReactStudy.git"
   },
   "keywords": [
-    "react", "redux"
+    "react",
+    "redux"
   ],
   "author": "PahanZ",
   "license": "ISC",
@@ -44,6 +45,7 @@
   },
   "dependencies": {
     "autoprefixer": "^7.2.5",
+    "axios": "^0.17.1",
     "eslint": "^4.15.0",
     "postcss-loader": "^2.0.10",
     "prop-types": "^15.6.0",
