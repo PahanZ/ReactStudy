@@ -50,14 +50,10 @@ const mapStateToProps = state => ({
   option: state.filterOption,
 });
 
-const mapDispatchToProps = dispatch => ({
-  downloadData: (data) => {
-    dispatch(downloadData(data));
-  },
-  changeCompany: (data) => {
-    dispatch(changeCompany(data));
-  },
-});
+const mapDispatchToProps = {
+  downloadData,
+  changeCompany,
+};
 
 App.propTypes = {
   flights: PropTypes.arrayOf(PropTypes.object).isRequired,

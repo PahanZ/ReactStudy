@@ -1,16 +1,7 @@
-import { setFlights, setCompanyFilter } from '../constants';
+import { combineReducers } from 'redux';
+import flights from './flights';
+import filterOption from './filterOption';
 
-const flights = (state = [], action) => {
-  if (action.type === setFlights) {
-    return [...action.payload];
-  }
-  return state;
-};
-
-const filterOption = (state = '', action) => {
-  if (action.type === setCompanyFilter) {
-    return action.payload;
-  }
-  return state;
-};
-export { flights, filterOption };
+export default combineReducers({
+  flights, filterOption,
+});
