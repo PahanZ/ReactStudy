@@ -7,11 +7,12 @@ import '../../styles.scss';
 import correctDate from '../data/correctDate';
 import Select from './Select';
 import Cards from './Cards';
+import { changeCompany, downloadData } from '../redux/actions';
 
 class App extends React.Component {
   componentDidMount() {
-    setTimeout(() => {
-      axios.get('../../../dist/data.json')
+    setTimeout(() => { // emulation response delay
+      axios.get('data.json')
         .then((response) => {
           this.props.downloadData(response.data.flights);
         })
@@ -51,16 +52,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   downloadData: (data) => {
-    dispatch({
-      type: 'setFlights',
-      payload: data,
-    });
+    dispatch(downloadData(data));
   },
   changeCompany: (data) => {
-    dispatch({
-      type: 'setCompanyFilter',
-      payload: data,
-    });
+    dispatch(changeCompany(data));
   },
 });
 
