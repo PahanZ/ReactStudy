@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const development = {
   devtool: 'source-map',
@@ -38,11 +39,23 @@ const development = {
           }, 'sass-loader'],
         }),
       },
+      {
+        test: /\.(json)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'data/[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new ExtractTextPlugin('./css/style.css'),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new CopyWebpackPlugin([{ from: './src/js/data/data.json', to: './' }]),
   ],
 };
 

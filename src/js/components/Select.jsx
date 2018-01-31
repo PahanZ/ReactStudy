@@ -7,13 +7,13 @@ const Select = (props) => {
   return <select onChange={(event) => { props.onChange(event.currentTarget.value); }} value={props.option}>{items}</select>;
 };
 
-// Select.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-//   option: PropTypes.string.isRequired,
-//   data: PropTypes.shape({
-//     Entries: PropTypes.string,
-//   }).isRequired,
-// };
+Select.propTypes = {
+  title: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  option: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    Entries: PropTypes.string,
+  }).isRequired,
+};
 
 export default Select;

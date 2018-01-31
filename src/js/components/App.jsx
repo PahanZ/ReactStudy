@@ -8,14 +8,18 @@ import correctDate from '../data/correctDate';
 import Select from './Select';
 import Cards from './Cards';
 
-
 class App extends React.Component {
   componentDidMount() {
     setTimeout(() => {
-      axios.get('../data/data.json')
-        .then((response) => { console.log(response); })
-        .catch((error) => { console.log(error); });
-    }, 1000);
+      axios.get('../../../dist/data.json')
+        .then((response) => {
+          this.props.downloadData(response.data.flights);
+        })
+        .catch((error) => {
+          alert('Ошибка загрузки данных');
+          console.log(error);
+        });
+    }, 1500);
   }
   render() {
     return (
@@ -35,20 +39,20 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  // flights: state.flights.flights.filter((element) => {
-  //   if (state.filterOption === '') {
-  //     return state.flights.flights;
-  //   }
-  //   return element.carrier === state.filterOption;
-  // }),
-  // carriers: new Set(state.flights.flights.map(item => (item.carrier))),
-  // option: state.filterOption,
+  flights: state.flights.filter((element) => {
+    if (state.filterOption === '') {
+      return state.flights;
+    }
+    return element.carrier === state.filterOption;
+  }),
+  carriers: new Set(state.flights.map(item => (item.carrier))),
+  option: state.filterOption,
 });
 
 const mapDispatchToProps = dispatch => ({
   downloadData: (data) => {
     dispatch({
-      type: 'downloadData',
+      type: 'setFlights',
       payload: data,
     });
   },
@@ -60,14 +64,15 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-// App.propTypes = {
-//   flights: PropTypes.array.isRequired,
-//   option: PropTypes.string.isRequired,
-//   changeCompany: PropTypes.func.isRequired,
-//   carriers: PropTypes.shape({
-//     Entries: PropTypes.string,
-//   }).isRequired,
-// };
+App.propTypes = {
+  flights: PropTypes.arrayOf(PropTypes.object).isRequired,
+  option: PropTypes.string.isRequired,
+  changeCompany: PropTypes.func.isRequired,
+  downloadData: PropTypes.func.isRequired,
+  carriers: PropTypes.shape({
+    Entries: PropTypes.string,
+  }).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
