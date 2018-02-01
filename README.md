@@ -16,8 +16,8 @@ carrier​
 Название авиакомпании.
 
 Для проверки production сборки команда 
-npm run serv
+npm run serv. 
 Production сборка по команде
-npm run build 
+npm run build. 
 Для develop сборки команда
-npm run start
+npm run start.
