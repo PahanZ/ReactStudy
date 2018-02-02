@@ -1,31 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import '../../styles.scss';
 
 import correctDate from '../data/correctDate';
 import Select from './Select';
 import Cards from './Cards';
-import { changeCompany, downloadData } from '../redux/actions';
+import { changeCompany, getFlights } from '../redux/actions';
 
 class App extends React.Component {
   componentDidMount() {
     setTimeout(() => { // emulation response delay
-      axios.get('data.json')
-        .then((response) => {
-          this.props.downloadData(response.data.flights);
-        })
-        .catch((error) => {
-          alert('Ошибка загрузки данных');
-          console.log(error);
-        });
+      this.props.getFlights();
     }, 1500);
   }
   render() {
     return (
       <div className="container">
-        <div>
+        <div className="select">
           <Select
             data={this.props.carriers}
             title="All Carrier"
@@ -33,7 +25,9 @@ class App extends React.Component {
             onChange={this.props.changeCompany}
           />
         </div>
-        <Cards data={this.props.flights} correctdate={correctDate} />
+        <div className="cards" >
+          <Cards data={this.props.flights} correctdate={correctDate} />
+        </div>
       </div>
     );
   }
@@ -51,7 +45,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  downloadData,
+  getFlights,
   changeCompany,
 };
 
@@ -59,7 +53,7 @@ App.propTypes = {
   flights: PropTypes.arrayOf(PropTypes.object).isRequired,
   option: PropTypes.string.isRequired,
   changeCompany: PropTypes.func.isRequired,
-  downloadData: PropTypes.func.isRequired,
+  getFlights: PropTypes.func.isRequired,
   carriers: PropTypes.shape({
     Entries: PropTypes.string,
   }).isRequired,
